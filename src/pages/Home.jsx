@@ -58,7 +58,7 @@ function BentoHeroCard({ pkg, onViewDetails }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.1 }}
       transition={{ duration: 0.6 }}
-      className="group relative rounded-2xl overflow-hidden w-full h-full cursor-pointer"
+      className="group relative rounded-2xl overflow-hidden w-full h-[360px] lg:h-full cursor-pointer"
       style={{ border: '1px solid var(--color-border)' }}
       onClick={onViewDetails}
     >
@@ -162,9 +162,8 @@ export default function Home() {
     >
       {/* ═══ HERO ═══ */}
       <section
-        className="relative flex flex-col items-center justify-center overflow-hidden"
+        className="relative flex flex-col items-center justify-center overflow-hidden min-h-[75dvh] lg:min-h-[100dvh]"
         style={{
-          minHeight: '100dvh',
           background: 'linear-gradient(135deg, #F5F0E8 60%, #EDE3D0 100%)',
         }}
       >
@@ -320,43 +319,39 @@ export default function Home() {
             </div>
           ) : (
             <div
-              className="grid gap-6"
-              style={{
-                gridTemplateColumns: 'repeat(3, 1fr)',
-                gridTemplateRows: '420px 360px auto',
-              }}
+              className="grid gap-6 grid-cols-1 lg:grid-cols-[repeat(3,1fr)] lg:grid-rows-[420px_360px_auto]"
             >
               {/* Bali — large hero: 2 cols wide × 2 rows tall */}
               {featured[0] && (
-                <div style={{ gridColumn: '1 / 3', gridRow: '1 / 3' }}>
+                <div className="lg:col-start-1 lg:col-end-3 lg:row-start-1 lg:row-end-3">
                   <BentoHeroCard pkg={featured[0]} onViewDetails={() => setModalPkg(featured[0])} />
                 </div>
               )}
 
               {/* Rajasthan — top-right */}
               {featured[1] && (
-                <div className="h-full" style={{ gridColumn: '3 / 4', gridRow: '1 / 2' }}>
+                <div className="lg:h-full lg:col-start-3 lg:col-end-4 lg:row-start-1 lg:row-end-2">
                   <PackageCard pkg={featured[1]} index={1} fillHeight onViewDetails={() => setModalPkg(featured[1])} />
                 </div>
               )}
 
               {/* Maldives — bottom-right, same column as Rajasthan */}
               {featured[2] && (
-                <div className="h-full" style={{ gridColumn: '3 / 4', gridRow: '2 / 3' }}>
+                <div className="lg:h-full lg:col-start-3 lg:col-end-4 lg:row-start-2 lg:row-end-3">
                   <PackageCard pkg={featured[2]} index={2} fillHeight onViewDetails={() => setModalPkg(featured[2])} />
                 </div>
               )}
 
               {/* Santorini */}
               {featured[3] && (
-                <div style={{ gridColumn: '1 / 2', gridRow: '3 / 4' }}>
+                <div className="lg:col-start-1 lg:col-end-2 lg:row-start-3 lg:row-end-4">
                   <PackageCard pkg={featured[3]} index={3} onViewDetails={() => setModalPkg(featured[3])} />
                 </div>
               )}
 
               {/* Japan */}
               {featured[4] && (
-                <div style={{ gridColumn: '2 / 3', gridRow: '3 / 4' }}>
+                <div className="lg:col-start-2 lg:col-end-3 lg:row-start-3 lg:row-end-4">
                   <PackageCard pkg={featured[4]} index={4} onViewDetails={() => setModalPkg(featured[4])} />
                 </div>
               )}
@@ -367,10 +362,8 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.15 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
-                className="rounded-2xl overflow-hidden relative"
+                className="rounded-2xl overflow-hidden relative lg:col-start-3 lg:col-end-4 lg:row-start-3 lg:row-end-4"
                 style={{
-                  gridColumn: '3 / 4',
-                  gridRow: '3 / 4',
                   border: '1px solid var(--color-border)',
                   background: 'linear-gradient(135deg, var(--color-bg-dark) 0%, var(--color-off-white) 100%)',
                 }}

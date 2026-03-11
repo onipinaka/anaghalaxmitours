@@ -9,22 +9,27 @@ export default function PackageCard({ pkg, onViewDetails, index = 0, isLarge = f
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.15 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className={`card-underline group rounded-2xl overflow-hidden flex flex-col ${isLarge ? 'sm:flex-row' : ''} ${fillHeight ? 'h-full' : ''}`}
+      className={`card-underline group rounded-2xl overflow-hidden flex flex-col ${isLarge ? 'sm:flex-row' : ''} ${fillHeight ? 'lg:h-full' : ''}`}
       style={{
         border: '1px solid var(--color-border)',
         backgroundColor: 'var(--color-off-white)',
       }}
     >
       {/* Image */}
-      <div className={`relative overflow-hidden ${isLarge ? 'sm:w-1/2' : ''} ${fillHeight ? 'flex-1' : ''}`}>
+      <div className={`relative overflow-hidden ${isLarge ? 'sm:w-1/2' : ''} ${fillHeight ? 'lg:flex-1' : ''}`}>
         <img
           src={pkg.image_url}
           alt={pkg.name}
           loading="lazy"
           width={800}
           height={500}
-          className="w-full object-cover transition-transform duration-700 group-hover:scale-105"
-          style={{ height: isLarge ? '100%' : fillHeight ? '100%' : 220, minHeight: isLarge ? 280 : fillHeight ? 160 : 220 }}
+          className={`w-full object-cover transition-transform duration-700 group-hover:scale-105 ${
+            isLarge
+              ? 'h-[280px] sm:h-full min-h-[280px]'
+              : fillHeight
+                ? 'h-[220px] lg:h-full min-h-[220px] lg:min-h-[160px]'
+                : 'h-[220px] min-h-[220px]'
+          }`}
         />
         {/* Category badge */}
         <span
