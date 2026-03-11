@@ -10,7 +10,8 @@ import ReviewCarousel from '../components/ui/ReviewCarousel';
 import Gallery from '../components/ui/Gallery';
 import { getFeaturedPackages } from '../lib/supabase';
 
-const heroWords = ['Wander.', 'Discover.', 'Return', 'Changed.'];
+const heroWords = ['Roam Free.', 'Live Fully.', 'Return', 'Whole.'];   
+
 
 const marqueeDestinations = 'Bali · Rajasthan · Santorini · Swiss Alps · Maldives · Kyoto · Patagonia · ';
 
