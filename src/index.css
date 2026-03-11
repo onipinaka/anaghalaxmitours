@@ -1,0 +1,250 @@
+@import "tailwindcss";
+
+/* ── Tailwind v4 Theme Extension ── */
+@theme {
+    --font-heading: "Cormorant Garamond", serif;
+    --font-body: "DM Sans", sans-serif;
+}
+
+/* ── CSS Custom Properties at :root (for inline styles via var()) ── */
+:root {
+    --color-bg: #F5F0E8;
+    --color-bg-dark: #EDE3D0;
+    --color-accent: #C8A96E;
+    --color-text: #2C2C2C;
+    --color-muted: #7A7065;
+    --color-off-white: #FDFAF5;
+    --color-border: rgba(200, 169, 110, 0.3);
+    --color-footer: #2C2C2C;
+    --font-heading: "Cormorant Garamond", serif;
+    --font-body: "DM Sans", sans-serif;
+}
+
+/* ── Base Reset (inside @layer base so Tailwind utilities override it) ── */
+@layer base {
+
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: var(--font-body);
+        font-weight: 400;
+        color: var(--color-text);
+        background-color: var(--color-bg);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        overflow-x: hidden;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: var(--font-heading);
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    img {
+        max-width: 100%;
+        display: block;
+    }
+
+    ::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: var(--color-bg);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: var(--color-border);
+        border-radius: 3px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: var(--color-accent);
+    }
+}
+
+/* ── SVG Grain Filter ── */
+.grain-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.04;
+    z-index: 1;
+}
+
+.grain-overlay svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* ── Shimmer Animation for Skeleton ── */
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+.skeleton-shimmer {
+    background: linear-gradient(90deg, #ede3d0 25%, #f5f0e8 50%, #ede3d0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s ease-in-out infinite;
+}
+
+/* ── Marquee Animation ── */
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.marquee-track {
+    display: flex;
+    animation: marquee 25s linear infinite;
+    width: max-content;
+}
+
+.marquee-track:hover {
+    animation-play-state: paused;
+}
+
+/* ── Gold Underline Sweep ── */
+.card-underline {
+    position: relative;
+}
+
+.card-underline::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+}
+
+.card-underline:hover::after {
+    transform: scaleX(1);
+}
+
+/* ── Floating Label Input ── */
+.float-label {
+    position: relative;
+}
+
+.float-label input,
+.float-label textarea,
+.float-label select {
+    width: 100%;
+    padding: 20px 16px 8px;
+    font-family: var(--font-body);
+    font-size: 15px;
+    color: var(--color-text);
+    background: var(--color-off-white);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.float-label input:focus,
+.float-label textarea:focus,
+.float-label select:focus {
+    border-color: var(--color-accent);
+}
+
+.float-label label {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 15px;
+    color: var(--color-muted);
+    pointer-events: none;
+    transition: all 0.2s ease;
+    font-family: var(--font-body);
+}
+
+.float-label textarea~label {
+    top: 20px;
+    transform: translateY(0);
+}
+
+.float-label select~label {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.float-label input:focus~label,
+.float-label input:not(:placeholder-shown)~label,
+.float-label textarea:focus~label,
+.float-label textarea:not(:placeholder-shown)~label,
+.float-label select:focus~label,
+.float-label select:not([value=""])~label {
+    top: 8px;
+    transform: translateY(0);
+    font-size: 11px;
+    color: var(--color-accent);
+}
+
+.float-label .error-input {
+    border-color: #c0392b !important;
+}
+
+.float-label .error-msg {
+    font-size: 12px;
+    color: #c0392b;
+    margin-top: 4px;
+    padding-left: 4px;
+}
+
+/* ── Bouncing Chevron ── */
+@keyframes bounce-slow {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(8px);
+    }
+}
+
+.bounce-chevron {
+    animation: bounce-slow 2s ease-in-out infinite;
+}
+
+/* ── Page Transition Wrapper ── */
+.page-wrapper {
+    min-height: 100dvh;
+}

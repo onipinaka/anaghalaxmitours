@@ -1,0 +1,346 @@
+[
+    {
+        "id": 1,
+        "name": "Bali Serenity Escape",
+        "slug": "bali-serenity-escape",
+        "tagline": "Find peace in the Island of Gods",
+        "category": "Beach",
+        "duration": "7 Days",
+        "price": "₹45,000",
+        "image_url": "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800&q=80",
+        "description": "Immerse yourself in Bali's serene beauty — from terraced rice paddies of Ubud to the sun-kissed shores of Seminyak. This week-long escape blends spiritual discovery with tropical luxury, featuring private villa stays, temple visits at sunrise, and world-class Balinese spa treatments.",
+        "overview": "Best Season: April – October | Group Size: 2–8 | Accommodation: Private Villas & Boutique Hotels | Transport: Private AC Car + Boat Transfers",
+        "itinerary": [
+            {
+                "day": 1,
+                "title": "Arrival in Denpasar",
+                "desc": "Airport pickup, transfer to Seminyak beachfront villa. Evening welcome dinner with traditional Balinese cuisine and a Kecak dance performance."
+            },
+            {
+                "day": 2,
+                "title": "Ubud Cultural Immersion",
+                "desc": "Visit Tegallalang Rice Terraces, Tirta Empul water temple purification ceremony, and artisan silver workshop in Celuk village."
+            },
+            {
+                "day": 3,
+                "title": "Mount Batur Sunrise Trek",
+                "desc": "Pre-dawn hike to Mount Batur summit for a breathtaking sunrise above the clouds, followed by natural hot spring soak and coffee plantation visit."
+            },
+            {
+                "day": 4,
+                "title": "Nusa Penida Day Trip",
+                "desc": "Speed boat to Nusa Penida. Visit Kelingking Beach, Angel's Billabong, and Broken Beach. Snorkeling with manta rays at Manta Point."
+            },
+            {
+                "day": 5,
+                "title": "Spa & Wellness Day",
+                "desc": "Full-day Balinese wellness retreat — traditional Lulur scrub, flower bath, yoga session overlooking jungle canopy, and organic farm-to-table lunch."
+            },
+            {
+                "day": 6,
+                "title": "Uluwatu & Beach Clubs",
+                "desc": "Explore Uluwatu Temple perched on dramatic sea cliffs, surf lesson at Padang Padang Beach, sunset cocktails at iconic beach club."
+            },
+            {
+                "day": 7,
+                "title": "Departure Day",
+                "desc": "Leisurely breakfast, last-minute shopping at Seminyak boutiques, airport transfer. Selamat jalan — until we meet again!"
+            }
+        ],
+        "included": "Airport Transfers|Private AC Vehicle|6 Nights Villa/Hotel|Daily Breakfast|Mount Batur Trek Guide|Nusa Penida Boat & Tour|Full-Day Spa Package|Uluwatu Temple Entry|24/7 Travel Support",
+        "not_included": "International Flights|Travel Insurance|Lunch & Dinner (except Day 1)|Personal Expenses|Optional Water Sports|Visa Fees",
+        "whatsapp_text": "Hi! I'm interested in the Bali Serenity Escape package (7 Days, ₹45,000). Could you share more details?",
+        "featured": true,
+        "active": true
+    },
+    {
+        "id": 2,
+        "name": "Rajasthan Royal Circuit",
+        "slug": "rajasthan-royal-circuit",
+        "tagline": "Walk through living history",
+        "category": "Cultural",
+        "duration": "8 Days",
+        "price": "₹38,000",
+        "image_url": "https://images.unsplash.com/photo-1599661046289-e31897846e41?w=800&q=80",
+        "description": "Journey through Rajasthan's majestic forts, vibrant bazaars, and golden deserts. From the pink city of Jaipur to the blue lanes of Jodhpur and the golden dunes of Jaisalmer, experience India's royal heritage with curated stays in heritage havelis and palace hotels.",
+        "overview": "Best Season: October – March | Group Size: 2–12 | Accommodation: Heritage Havelis & Palace Hotels | Transport: Private AC Sedan + Camel Safari",
+        "itinerary": [
+            {
+                "day": 1,
+                "title": "Welcome to Jaipur",
+                "desc": "Arrive at Jaipur airport, transfer to heritage haveli. Evening walk through Johari Bazaar and traditional Rajasthani thali dinner."
+            },
+            {
+                "day": 2,
+                "title": "Jaipur Fort & Palace Tour",
+                "desc": "Amber Fort elephant/jeep ride, City Palace museum, Hawa Mahal photo stop, Jantar Mantar observatory. Evening block-print workshop."
+            },
+            {
+                "day": 3,
+                "title": "Jaipur to Pushkar",
+                "desc": "Drive to sacred Pushkar town. Visit Brahma Temple, evening aarti at Pushkar Ghat, camel fair grounds. Stay at lakeside boutique camp."
+            },
+            {
+                "day": 4,
+                "title": "Pushkar to Jodhpur",
+                "desc": "Scenic drive to the Blue City. Explore Mehrangarh Fort with audio guide, zip-line over fort walls, dinner at stepwell restaurant."
+            },
+            {
+                "day": 5,
+                "title": "Jodhpur Heritage Walk",
+                "desc": "Guided walk through blue-painted old city lanes, spice market tour, Umaid Bhawan Palace museum, clock tower market visit."
+            },
+            {
+                "day": 6,
+                "title": "Jodhpur to Jaisalmer",
+                "desc": "Drive through Thar Desert landscape. Evening arrival at Jaisalmer Fort — the only living fort in India. Rooftop dinner under stars."
+            },
+            {
+                "day": 7,
+                "title": "Desert Safari & Dunes",
+                "desc": "Jaisalmer Fort walking tour, Patwon Ki Haveli, afternoon camel safari to Sam Sand Dunes. Overnight desert camp with folk music and dance."
+            },
+            {
+                "day": 8,
+                "title": "Sunrise & Departure",
+                "desc": "Desert sunrise, chai on the dunes, transfer to Jaisalmer airport/station. Royal memories to carry home forever."
+            }
+        ],
+        "included": "All Transfers|7 Nights Heritage Stays|Daily Breakfast|Amber Fort Entry & Ride|Mehrangarh Fort Entry|Camel Safari & Desert Camp|Pushkar Temple Visit|Block-Print Workshop|24/7 Support",
+        "not_included": "Flights/Trains to Jaipur|Travel Insurance|Lunch & Dinner (except specified)|Camera Fees at Monuments|Personal Shopping|Tips & Gratuities",
+        "whatsapp_text": "Hi! I'm interested in the Rajasthan Royal Circuit package (8 Days, ₹38,000). Could you share more details?",
+        "featured": true,
+        "active": true
+    },
+    {
+        "id": 3,
+        "name": "Maldives Overwater Retreat",
+        "slug": "maldives-overwater-retreat",
+        "tagline": "Where turquoise meets infinity",
+        "category": "Beach",
+        "duration": "5 Days",
+        "price": "₹95,000",
+        "image_url": "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=800&q=80",
+        "description": "Float above crystal-clear lagoons in a luxury overwater villa. The Maldives Overwater Retreat is the ultimate tropical escape — private decks with ocean access, underwater dining, world-class snorkeling, and the kind of sunsets that redefine beauty.",
+        "overview": "Best Season: November – April | Group Size: 2–4 | Accommodation: Overwater Villa | Transport: Speedboat + Seaplane Transfers",
+        "itinerary": [
+            {
+                "day": 1,
+                "title": "Arrival in Paradise",
+                "desc": "Seaplane transfer from Malé to resort atoll. Welcome with fresh coconut, check into overwater villa. Sunset champagne on private deck."
+            },
+            {
+                "day": 2,
+                "title": "Marine Discovery",
+                "desc": "Morning guided snorkeling at house reef — spot sea turtles, reef sharks, and vibrant coral. Afternoon couples spa treatment. Underwater restaurant dinner."
+            },
+            {
+                "day": 3,
+                "title": "Island Hopping & Dolphins",
+                "desc": "Visit local fishing village on nearby island, dolphin cruise at golden hour, sandbank picnic with private chef. Stargazing from ocean hammock."
+            },
+            {
+                "day": 4,
+                "title": "Adventure & Relaxation",
+                "desc": "Choice of scuba diving intro, jet skiing, or parasailing. Afternoon at infinity pool. Farewell beach dinner with Maldivian lobster."
+            },
+            {
+                "day": 5,
+                "title": "Departure",
+                "desc": "Sunrise yoga on deck, leisurely breakfast, seaplane transfer back to Malé. Carry the ocean calm home with you."
+            }
+        ],
+        "included": "Seaplane Transfers|4 Nights Overwater Villa|Full Board Meals|Guided Snorkeling|Dolphin Cruise|Couples Spa Session|Island Hopping Tour|Sandbank Picnic|24/7 Concierge",
+        "not_included": "International Flights|Travel Insurance|Premium Alcohol|Scuba Diving Certification|Water Sports Equipment Rental|Souvenir Shopping",
+        "whatsapp_text": "Hi! I'm interested in the Maldives Overwater Retreat (5 Days, ₹95,000). Could you share more details?",
+        "featured": true,
+        "active": true
+    },
+    {
+        "id": 4,
+        "name": "Himalayan Soul Trek",
+        "slug": "himalayan-soul-trek",
+        "tagline": "Breathe where the earth touches the sky",
+        "category": "Adventure",
+        "duration": "10 Days",
+        "price": "₹28,000",
+        "image_url": "https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?w=800&q=80",
+        "description": "Trek through ancient rhododendron forests, cross high-altitude passes, and camp beneath Himalayan peaks. This soul-stirring 10-day adventure takes you from lush green valleys to snow-dusted ridges — perfect for the trekker seeking both challenge and transcendence.",
+        "overview": "Best Season: March – June, September – November | Group Size: 4–12 | Accommodation: Mountain Lodges & Alpine Camps | Transport: Shared 4x4 Vehicle + On-Foot",
+        "itinerary": [
+            {
+                "day": 1,
+                "title": "Arrival in Manali",
+                "desc": "Reach Manali, acclimatization walk along Beas River, gear check and trek briefing at base camp lodge. Welcome bonfire dinner."
+            },
+            {
+                "day": 2,
+                "title": "Manali to Jobra",
+                "desc": "Drive to Jobra trailhead (9,800 ft). Begin trek through dense pine forests. Camp setup at riverside meadow with mountain views."
+            },
+            {
+                "day": 3,
+                "title": "Jobra to Waterfall Camp",
+                "desc": "Trek through silver birch forests, cross wooden bridges over glacial streams. Lunch at shepherd's hut. Camp near a 100-foot waterfall."
+            },
+            {
+                "day": 4,
+                "title": "Waterfall Camp to Rani Sui Lake",
+                "desc": "Ascend through rhododendron tunnels to pristine alpine lake at 12,000 ft. Reflection photography, acclimatization yoga session."
+            },
+            {
+                "day": 5,
+                "title": "Rest & Exploration Day",
+                "desc": "Acclimatization day at Rani Sui. Optional scramble to nearby ridge for panoramic views. Flora identification walk with guide."
+            },
+            {
+                "day": 6,
+                "title": "Push to High Camp",
+                "desc": "Challenging ascent to High Camp at 14,200 ft. Above tree line — endless views of snow peaks. Hot soup and early sleep for summit push."
+            },
+            {
+                "day": 7,
+                "title": "Summit Day",
+                "desc": "Pre-dawn start for summit push (15,500 ft). 360° views of Pir Panjal and Dhauladhar ranges. Celebration at top, descend to High Camp."
+            },
+            {
+                "day": 8,
+                "title": "High Camp to Base Valley",
+                "desc": "Long descent through varied terrain — snow, meadow, forest. Celebratory camp dinner with local Himachali food and music."
+            },
+            {
+                "day": 9,
+                "title": "Base Valley to Manali",
+                "desc": "Final stretch of trek to road-head. Drive back to Manali. Hot shower, certificate ceremony, group dinner at riverside café."
+            },
+            {
+                "day": 10,
+                "title": "Departure",
+                "desc": "Breakfast, goodbyes, transfer to Manali bus stand or airport. The mountains will call you back."
+            }
+        ],
+        "included": "Manali Transfers|All Camping Equipment|9 Nights Accommodation|All Meals on Trek|Certified Trek Leader & Guides|Permits & Forest Fees|First Aid & Oxygen Kit|Porter Support|Certificate of Completion",
+        "not_included": "Travel to/from Manali|Travel Insurance|Personal Trekking Gear|Sleeping Bag Rental (₹500)|Tips for Guides|Personal Snacks & Energy Bars",
+        "whatsapp_text": "Hi! I'm interested in the Himalayan Soul Trek (10 Days, ₹28,000). Could you share more details?",
+        "featured": false,
+        "active": true
+    },
+    {
+        "id": 5,
+        "name": "Santorini Honeymoon Package",
+        "slug": "santorini-honeymoon-package",
+        "tagline": "Love letters written in sunset hues",
+        "category": "Honeymoon",
+        "duration": "7 Days",
+        "price": "₹1,20,000",
+        "image_url": "https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=800&q=80",
+        "description": "Celebrate love against the world's most romantic backdrop. White-washed villages tumbling down volcanic cliffs, sunsets that paint the Aegean in liquid gold, candlelit dinners in cave restaurants — Santorini is where honeymoons become love stories told for a lifetime.",
+        "overview": "Best Season: May – October | Group Size: 2 (Private) | Accommodation: Cave Suites & Boutique Hotels | Transport: Private Transfers + Catamaran",
+        "itinerary": [
+            {
+                "day": 1,
+                "title": "Arrival in Santorini",
+                "desc": "Airport pickup, transfer to iconic cave suite in Oia with private plunge pool and caldera views. Welcome wine and cheese platter."
+            },
+            {
+                "day": 2,
+                "title": "Oia Exploration",
+                "desc": "Guided walk through Oia's blue-domed churches and art galleries. Ammoudi Bay seafood lunch. Famous Oia sunset from castle ruins."
+            },
+            {
+                "day": 3,
+                "title": "Catamaran Sunset Cruise",
+                "desc": "Private catamaran sailing around the caldera — swim in hot springs, snorkel at Red Beach, BBQ dinner on board as the sun sets."
+            },
+            {
+                "day": 4,
+                "title": "Wine & Gastronomy",
+                "desc": "Santorini wine tour — visit three volcanic vineyards. Couples cooking class making traditional fava and tomato keftedes. Dinner at cliffside restaurant."
+            },
+            {
+                "day": 5,
+                "title": "Ancient Akrotiri & Beaches",
+                "desc": "Explore the Pompeii of the Aegean at Akrotiri archaeological site. Afternoon at Red Beach and Perissa Black Sand Beach."
+            },
+            {
+                "day": 6,
+                "title": "Spa & Free Day",
+                "desc": "Morning couples spa with volcanic stone massage. Rest of day free — explore Fira, shop for gold jewelry, or simply float in the pool."
+            },
+            {
+                "day": 7,
+                "title": "Departure",
+                "desc": "Final caldera sunrise, breakfast in bed, airport transfer. Αντίο Santorini — you'll always have the sunsets."
+            }
+        ],
+        "included": "Airport Transfers|6 Nights Cave Suite/Hotel|Daily Breakfast|Private Catamaran Cruise|Wine Tour (3 Vineyards)|Cooking Class|Couples Spa Treatment|Akrotiri Entry Ticket|24/7 Concierge",
+        "not_included": "International Flights|Travel Insurance|Lunch & Dinner (except specified)|Personal Shopping|Optional Helicopter Tour|Visa Processing",
+        "whatsapp_text": "Hi! I'm interested in the Santorini Honeymoon Package (7 Days, ₹1,20,000). Could you share more details?",
+        "featured": true,
+        "active": true
+    },
+    {
+        "id": 6,
+        "name": "Japan Cherry Blossom Tour",
+        "slug": "japan-cherry-blossom-tour",
+        "tagline": "Ephemeral beauty, eternal memories",
+        "category": "Cultural",
+        "duration": "9 Days",
+        "price": "₹1,35,000",
+        "image_url": "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&q=80",
+        "description": "Witness Japan's most magical season — when millions of cherry trees burst into clouds of pink and white. From Tokyo's neon pulse to Kyoto's ancient temples, this 9-day cultural journey weaves together modern marvel and timeless tradition beneath a canopy of sakura blossoms.",
+        "overview": "Best Season: Late March – Mid April | Group Size: 2–10 | Accommodation: Ryokans & Boutique Hotels | Transport: Japan Rail Pass + Private Transfers",
+        "itinerary": [
+            {
+                "day": 1,
+                "title": "Arrival in Tokyo",
+                "desc": "Narita/Haneda airport pickup, transfer to Shinjuku boutique hotel. Evening orientation walk through Kabukicho and Golden Gai izakaya alley."
+            },
+            {
+                "day": 2,
+                "title": "Tokyo Highlights",
+                "desc": "Meiji Shrine morning walk, Harajuku street culture, Shibuya Crossing. Afternoon hanami picnic under cherry trees at Ueno Park."
+            },
+            {
+                "day": 3,
+                "title": "Tsukiji & Asakusa",
+                "desc": "Tsukiji Outer Market food tour — fresh sushi, tamagoyaki, matcha. Asakusa Senso-ji Temple, rickshaw ride, evening Tokyo Skytree visit."
+            },
+            {
+                "day": 4,
+                "title": "Day Trip to Hakone",
+                "desc": "Bullet train to Hakone. Lake Ashi cruise with Mt. Fuji views, Owakudani volcanic valley, open-air hot spring museum. Traditional onsen evening."
+            },
+            {
+                "day": 5,
+                "title": "Tokyo to Kyoto",
+                "desc": "Shinkansen to Kyoto. Afternoon at Fushimi Inari's 10,000 torii gates. Evening geisha district walk in Gion. Kaiseki dinner at traditional machiya."
+            },
+            {
+                "day": 6,
+                "title": "Kyoto Temples & Cherry Blossoms",
+                "desc": "Philosopher's Path cherry blossom walk, Kinkaku-ji Golden Pavilion, Arashiyama Bamboo Grove, monkey park. Tea ceremony at 400-year-old tea house."
+            },
+            {
+                "day": 7,
+                "title": "Nara Day Trip",
+                "desc": "Train to ancient capital Nara. Todai-ji Great Buddha Hall, friendly deer park, Kasuga Shrine with 3,000 lanterns. Return to Kyoto for free evening."
+            },
+            {
+                "day": 8,
+                "title": "Osaka Food Capital",
+                "desc": "Train to Osaka. Osaka Castle cherry blossom viewing, Dotonbori street food crawl — takoyaki, okonomiyaki, gyoza. Dinner cruise on Osaka River."
+            },
+            {
+                "day": 9,
+                "title": "Departure",
+                "desc": "Morning at leisure, last-minute shopping in Kyoto station. Transfer to Kansai International Airport. さようなら Japan — until the next spring."
+            }
+        ],
+        "included": "Airport Transfers|7-Day Japan Rail Pass|8 Nights Hotels & Ryokan|Daily Breakfast|Hakone Day Trip|Tea Ceremony|Tsukiji Food Tour|Osaka Food Tour|Guided Temple Visits|24/7 Support",
+        "not_included": "International Flights|Travel Insurance|Lunch & Dinner (except tours)|Personal Shopping|Optional Robot Restaurant|Visa Processing Fees",
+        "whatsapp_text": "Hi! I'm interested in the Japan Cherry Blossom Tour (9 Days, ₹1,35,000). Could you share more details?",
+        "featured": true,
+        "active": true
+    }
+]
