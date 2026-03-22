@@ -4,40 +4,40 @@ import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
 
 const reviews = [
   {
-    name: 'Aditi Sharma',
-    destination: 'Bali, Indonesia',
+    name: 'Shrikant Sangale',
+    destination: 'Dwarka, Somnath and Girnar',
     rating: 5,
-    text: '"Anaghalaxmi Tours turned our Bali trip into a story we tell at every dinner party. The rice terrace sunrise and private villa were beyond anything we imagined."',
+    text: '"Namskar, wonderful trip to dwaraka,Somnath and girnaar.  Journey from pune to dwaraka, dwaraka to Somnath and further to Girnar and back to pune was well arranged,planned and managed by anaghalaxmi tours. They have made it a memorable and great trip for all of us. Thanks Anaghalaxmi Tours."',
   },
   {
-    name: 'Rohit Mehta',
-    destination: 'Rajasthan, India',
+    name: 'Sujata Katore',
+    destination: 'Dhanushkodi, India',
     rating: 5,
-    text: '"Sleeping in a desert camp under a billion stars while folk musicians played — that\'s the kind of moment you can\'t plan alone. Thank you, Anaghalaxmi Tours."',
+    text: '"The staff of Anagha Tour were very supportive and helpful throughout the trip. All the arrangements were good, and they took care of everything nicely, which made both wore journey easy and enjoyable."',
   },
   {
-    name: 'Priya Nair',
-    destination: 'Santorini, Greece',
+    name: 'Amol Daigude',
+    destination: 'Pithapuram, Vishakapatnam',
     rating: 5,
-    text: '"Our honeymoon was absolutely flawless. Every restaurant, every sunset point, every ferry — curated with such love and attention to detail."',
+    text: '"I went to Pithapuram, Vishakapatnam.Very good management for travelling and other all facilities.All team members are satisfied about this trip."',
   },
   {
-    name: 'Arjun Kapoor',
-    destination: 'Japan',
+    name: 'Shashikant Nerlekar',
+    destination: 'Kashi, Ayodhya, Nepal',
     rating: 5,
-    text: '"The cherry blossom season in Kyoto was magical. Anaghalaxmi Tours arranged a private tea ceremony that made us feel like we\'d stepped back in time."',
+    text: '"We experienced very nice tour of Kashi, Ayodhya, Nepal. Its well arranged by Moreji. Accommodation along with breakfast, Lunch and Dinner was also very good and therefore no health issues were observed."',
   },
   {
-    name: 'Meera Joshi',
-    destination: 'Maldives',
+    name: 'Pallavi Kale',
+    destination: 'Ayodhya',
     rating: 5,
-    text: '"Waking up to turquoise water right beneath our villa floor — it felt surreal. Anaghalaxmi Tours made luxury feel effortless and personal."',
+    text: '"I had a wonderful experience with this travel company. Everything was very well managed, and the arrangements were smooth from start to finish."',
   },
   {
-    name: 'Vikram Singh',
-    destination: 'Himalayas, India',
+    name: 'Noddya Mathwad',
+    destination: 'Girnar',
     rating: 5,
-    text: '"The trek was challenging but the guides were incredible. Standing at the summit watching the sun rise over snow peaks changed something in me forever."',
+    text: '"Travelled with anaghalaxmi tours to girnar.The tour was great.Whole management from start to end was professional without any misleading information."',
   },
 ];
 
