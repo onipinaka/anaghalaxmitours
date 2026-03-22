@@ -8,14 +8,14 @@
 
 /* ── CSS Custom Properties at :root (for inline styles via var()) ── */
 :root {
-    --color-bg: #F5F0E8;
-    --color-bg-dark: #EDE3D0;
-    --color-accent: #C8A96E;
-    --color-text: #2C2C2C;
+    --color-bg: #FDF3EC;
+    --color-bg-dark: #F9E4D0;
+    --color-accent: #E07030;
+    --color-text: #121345;
     --color-muted: #7A7065;
     --color-off-white: #FDFAF5;
     --color-border: rgba(200, 169, 110, 0.3);
-    --color-footer: #2C2C2C;
+    --color-footer: #353538;
     --font-heading: "Cormorant Garamond", serif;
     --font-body: "DM Sans", sans-serif;
 }

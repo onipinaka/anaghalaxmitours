@@ -55,27 +55,39 @@ export default function Contact() {
                 </motion.blockquote>
 
                 <div className="space-y-5">
-                  <motion.a
-                    href="tel:+918600669991"
+                  <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.1, duration: 0.5 }}
-                    className="flex items-center gap-4 group"
+                    className="flex items-start gap-4"
                   >
                     <div
-                      className="w-11 h-11 flex items-center justify-center rounded-full transition-colors duration-300"
+                      className="w-11 h-11 flex items-center justify-center rounded-full flex-shrink-0 transition-colors duration-300"
                       style={{ border: '1px solid var(--color-border)' }}
                     >
                       <Phone size={18} color="var(--color-accent)" />
                     </div>
                     <div>
-                      <span className="text-xs uppercase tracking-widest block" style={{ color: 'var(--color-muted)' }}>
+                      <span className="text-xs uppercase tracking-widest block mb-1" style={{ color: 'var(--color-muted)' }}>
                         Phone
                       </span>
-                      <span className="text-sm font-medium group-hover:underline">+91 86006 69991</span>
+                      {[
+                        { display: '+91 86006 69991', tel: '+918600669991' },
+                        { display: '+91 70283 75777', tel: '+917028375777' },
+                        { display: '+91 95959 69721', tel: '+919595969721' },
+                      ].map(({ display, tel }) => (
+                        <a
+                          key={tel}
+                          href={`tel:${tel}`}
+                          className="block text-sm font-medium hover:underline"
+                        >
+                          {display}
+                        </a>
+                      ))}
                     </div>
-                  </motion.a>
+                  </motion.div>
+
 
                   <motion.a
                     href="mailto:anaghalaxmitours21@gmail.com"
@@ -116,7 +128,7 @@ export default function Contact() {
                       <span className="text-xs uppercase tracking-widest block" style={{ color: 'var(--color-muted)' }}>
                         City
                       </span>
-                      <span className="text-sm font-medium">Chimanya Ganapathi Chowk, Sadashiv Peth, Pune, Maharashtra 411030</span>
+                      <span className="text-sm font-medium">Flat No.201, Shripal Society A Wing, 19/21, Shukrawar Peth - Mahatma Gandhi Rd, Mandai, Shukrawar Peth, Pune, Maharashtra 411002</span>
                     </div>
                   </motion.div>
                 </div>

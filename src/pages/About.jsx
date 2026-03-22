@@ -4,21 +4,21 @@ import { Compass, Heart, Globe, Award } from 'lucide-react';
 
 const team = [
   {
-    name: 'Aryan Mehta',
+    name: 'Rishikesh More',
     role: 'Founder & Lead Planner',
-    bio: 'A reformed software engineer who traded his laptop for a backpack in 2016. Aryan has personally visited 34 countries and believes every trip should leave you slightly different from who you arrived.',
+    bio: 'Rishikesh has personally visited 6 countries and believes every trip should leave you slightly different from who you arrived.',
     emoji: '✈️',
   },
   {
-    name: 'Nisha Kapoor',
+    name: 'Yash Shah',
     role: 'Co-founder & Experience Designer',
-    bio: "Former luxury hotel manager with a nose for the hidden — hidden restaurants, hidden beaches, hidden moments between the tourist stops. Nisha designs the parts of your trip you'll remember forever.",
+    bio: "With a nose for the hidden - hidden restaurants, hidden beaches, hidden moments between the tourist stops. Yash designs the parts of your trip you'll remember forever.",
     emoji: '🌿',
   },
   {
-    name: 'Rohan Das',
+    name: 'Vaishnavi More',
     role: 'Head of Operations',
-    bio: 'The man who makes sure your airport transfer is on time even when your flight lands two hours late. Rohan\'s attention to detail is the silent magic behind every seamless journey.',
+    bio: 'The woman who makes sure your airport transfer is on time even when your flight lands two hours late. Vaishnavi\'s attention to detail is the silent magic behind every seamless journey.',
     emoji: '📍',
   },
 ];
@@ -157,7 +157,7 @@ export default function About() {
             </h2>
             <div className="space-y-4 text-sm leading-relaxed" style={{ color: 'var(--color-muted)', fontWeight: 300 }}>
               <p>
-                Anaghalaxmi Tours started in 2016 as a passionate side project — two friends who kept getting asked "how did you plan that trip?" decided to turn their obsession into a business.
+                Anaghalaxmi Tours started in 2021 as a passionate side project — two friends who kept getting asked "how did you plan that trip?" decided to turn their obsession into a business.
               </p>
               <p>
                 We started with 3 packages and a single WhatsApp number. Today, we design 200+ journeys a year across 48 destinations, but the approach hasn't changed: deeply personal, rigorously researched, beautifully executed.
@@ -171,9 +171,9 @@ export default function About() {
           {/* Story Timeline */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { year: '2016', label: 'Founded', desc: 'Two friends, one spreadsheet, and a dream to make travel feel personal again.' },
-              { year: '2019', label: 'Expanded', desc: 'Grew to 8 destinations and 50+ trips. Opened our first physical studio presence.' },
-              { year: '2024', label: 'Today', desc: 'Over 1,200 travelers, 48 destinations, and a team of 9 passionate explorers.' },
+              { year: '2021', label: 'Founded', desc: 'Two friends, one spreadsheet, and a dream to make travel feel personal again.' },
+              { year: '2023', label: 'Expanded', desc: 'Grew to 8 destinations and 50+ trips. Opened our first physical studio presence.' },
+              { year: '2026', label: 'Today', desc: 'Over 1,200 travelers, 48 destinations, and a team of 9 passionate explorers.' },
             ].map((item, i) => (
               <motion.div
                 key={item.year}

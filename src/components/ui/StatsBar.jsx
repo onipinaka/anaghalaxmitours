@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 const stats = [
   { end: 1200, suffix: '+', label: 'Happy Travelers' },
   { end: 48, suffix: '', label: 'Destinations' },
-  { end: 8, suffix: '', label: 'Years of Experience' },
+  { end: 5, suffix: '', label: 'Years of Experience' },
   { end: 100, suffix: '%', label: 'Tailored Trips' },
 ];
 

@@ -1,6 +1,6 @@
 import { Search } from 'lucide-react';
 
-const categories = ['All', 'Adventure', 'Honeymoon', 'Cultural', 'Beach', 'Mountains'];
+const categories = ['All', 'Domestic', 'International'];
 const sortOptions = [
   { value: 'default', label: 'Default' },
   { value: 'price-low', label: 'Price: Low–High' },

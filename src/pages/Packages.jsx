@@ -26,9 +26,9 @@ export default function Packages() {
   const filtered = useMemo(() => {
     let result = [...packages];
 
-    // Category filter
+    // Destination type filter
     if (activeCategory !== 'All') {
-      result = result.filter((p) => p.category === activeCategory);
+      result = result.filter((p) => p.destination_type === activeCategory);
     }
 
     // Search filter

@@ -96,7 +96,7 @@ export default function Navbar() {
               borderRadius: '8px',
             }}
           >
-            Plan My Trip
+            Book Now
           </Link>
 
           {/* Mobile Hamburger */}

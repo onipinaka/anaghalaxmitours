@@ -58,9 +58,15 @@ export default function Footer() {
                 <a href="tel:+918600669991" className="hover:text-white transition-colors">+91 86006 69991</a>
               </li>
               <li>
+                <a href="tel:+919595969721" className="hover:text-white transition-colors">+91 95959 69721</a>
+              </li>
+              <li>
+                <a href="tel:+917028375777" className="hover:text-white transition-colors">+91 70283 75777</a>
+              </li>
+              <li>
                 <a href="mailto:anaghalaxmitours21@gmail.com" className="hover:text-white transition-colors">anaghalaxmitours21@gmail.com</a>
               </li>
-              <li>Chimanya Ganapathi Chowk, Sadashiv Peth, Pune, Maharashtra 411030</li>
+              <li>Flat No.201, Shripal Society A Wing, 19/21, Shukrawar Peth - Mahatma Gandhi Rd, Mandai, Shukrawar Peth, Pune, Maharashtra 411002</li>
             </ul>
           </div>
 
