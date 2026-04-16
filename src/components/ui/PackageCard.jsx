@@ -1,8 +1,44 @@
 import { motion } from 'framer-motion';
-import { Clock, MessageCircle } from 'lucide-react';
+import { Clock, MessageCircle, Calendar, Users } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
+// Parse "3 Tier AC - 15999|AC Bus - 18999" → [{ label, price }]
+function parsePricingTiers(raw) {
+  if (!raw) return [];
+  return raw.split(',').map((t) => {
+    const dashIdx = t.lastIndexOf(' - ');
+    if (dashIdx === -1) return null;
+    const label = t.slice(0, dashIdx).trim();
+    const price = parseInt(t.slice(dashIdx + 3).trim(), 10);
+    return { label, price };
+  }).filter(Boolean);
+}
+
+function formatDate(iso) {
+  if (!iso) return '';
+  return new Date(iso).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+}
+
+function formatDateShort(iso) {
+  if (!iso) return '';
+  return new Date(iso).toLocaleDateString('en-IN', { day: 'numeric', month: 'short' });
+}
+
 export default function PackageCard({ pkg, onViewDetails, index = 0, isLarge = false, fillHeight = false }) {
+  const tiers = parsePricingTiers(pkg.pricing_tiers);
+  const lowestPrice = tiers.length > 0
+    ? Math.min(...tiers.map((t) => t.price))
+    : null;
+
+  const displayPrice = lowestPrice
+    ? `From ₹${lowestPrice.toLocaleString('en-IN')}`
+    : pkg.price
+      ? `₹${pkg.price}`
+      : null;
+
+  const hasDates = pkg.start_date && pkg.end_date;
+  const lowSeats = pkg.seats_available != null && pkg.seats_available <= 10;
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -58,6 +94,22 @@ export default function PackageCard({ pkg, onViewDetails, index = 0, isLarge = f
           <Clock size={12} />
           {pkg.duration}
         </span>
+        {/* Low seats badge */}
+        {lowSeats && (
+          <span
+            className="absolute bottom-3 left-3 px-2 py-1 text-xs rounded-md flex items-center gap-1"
+            style={{
+              backgroundColor: 'rgba(220,38,38,0.88)',
+              color: '#fff',
+              fontFamily: 'var(--font-body)',
+              fontWeight: 600,
+              backdropFilter: 'blur(4px)',
+            }}
+          >
+            <Users size={11} />
+            Only {pkg.seats_available} seats left!
+          </span>
+        )}
       </div>
 
       {/* Content */}
@@ -69,18 +121,43 @@ export default function PackageCard({ pkg, onViewDetails, index = 0, isLarge = f
           {pkg.name}
         </h3>
         <p
-          className="text-sm mb-4 line-clamp-2"
+          className="text-sm mb-3 line-clamp-2"
           style={{ color: 'var(--color-muted)', fontWeight: 300, lineHeight: 1.6 }}
         >
           {pkg.tagline}
         </p>
-        <div className="flex items-center justify-between mt-auto">
-          <span
-            className="text-lg"
-            style={{ fontFamily: 'var(--font-heading)', fontWeight: 600, color: 'var(--color-accent)' }}
+
+        {/* Date strip */}
+        {hasDates && (
+          <div
+            className="flex items-center gap-1.5 text-xs mb-4 py-2 px-3 rounded-lg"
+            style={{
+              backgroundColor: 'var(--color-bg-dark)',
+              color: 'var(--color-muted)',
+              border: '1px solid var(--color-border)',
+            }}
           >
-            {pkg.price}
-          </span>
+            <Calendar size={11} />
+            <span style={{ fontWeight: 500 }}>
+              {formatDateShort(pkg.start_date)} – {formatDate(pkg.end_date)}
+            </span>
+          </div>
+        )}
+
+        <div className="flex items-center justify-between mt-auto">
+          <div>
+            <span
+              className="text-lg block"
+              style={{ fontFamily: 'var(--font-heading)', fontWeight: 600, color: 'var(--color-accent)' }}
+            >
+              {displayPrice}
+            </span>
+            {tiers.length > 1 && (
+              <span className="text-xs" style={{ color: 'var(--color-muted)' }}>
+                {tiers.length} pricing options
+              </span>
+            )}
+          </div>
           <div className="flex items-center gap-2">
             <Link
               to={`/packages/${pkg.slug}`}

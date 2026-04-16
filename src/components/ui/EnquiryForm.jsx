@@ -87,12 +87,12 @@ export default function EnquiryForm({ source = 'Contact Page' }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Validate required fields
+    // Validate required fields — only name and phone are mandatory
     const newErrors = {};
     if (!form.name.trim()) newErrors.name = 'Full name is required';
-    if (!form.email.trim()) newErrors.email = 'Email is required';
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) newErrors.email = 'Enter a valid email';
     if (!form.phone.trim()) newErrors.phone = 'Phone number is required';
+    else if (!/^[\d\s+\-()]{8,15}$/.test(form.phone)) newErrors.phone = 'Enter a valid phone number';
+    if (form.email.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) newErrors.email = 'Enter a valid email';
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
@@ -217,7 +217,7 @@ export default function EnquiryForm({ source = 'Contact Page' }) {
                 onBlur={handleBlur}
                 className={errors.email ? 'error-input' : ''}
               />
-              <label>Email *</label>
+              <label>Email (Optional)</label>
               {errors.email && <p className="error-msg">{errors.email}</p>}
             </div>
 
@@ -242,7 +242,6 @@ export default function EnquiryForm({ source = 'Contact Page' }) {
                 name="package"
                 value={form.package}
                 onChange={handleChange}
-                required
               >
                 <option value="">Select a package</option>
                 {packages.map((pkg) => (
@@ -283,14 +282,14 @@ export default function EnquiryForm({ source = 'Contact Page' }) {
             {/* Budget + Hear */}
             <div className="grid grid-cols-2 gap-4">
               <div className="float-label">
-                <select name="budget" value={form.budget} onChange={handleChange} required>
+                <select name="budget" value={form.budget} onChange={handleChange}>
                   <option value="">Budget</option>
                   {budgetOptions.map((b) => <option key={b} value={b}>{b}</option>)}
                 </select>
                 <label>Budget Range</label>
               </div>
               <div className="float-label">
-                <select name="hearAbout" value={form.hearAbout} onChange={handleChange} required>
+                <select name="hearAbout" value={form.hearAbout} onChange={handleChange}>
                   <option value="">How did you hear?</option>
                   {hearAboutOptions.map((h) => <option key={h} value={h}>{h}</option>)}
                 </select>

@@ -1,7 +1,24 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Clock, MessageCircle, Check, Minus } from 'lucide-react';
+import { X, Clock, MessageCircle, Check, Minus, Calendar, Users } from 'lucide-react';
 import { Link } from 'react-router-dom';
+
+// Parse "3 Tier AC - 15999|AC Bus - 18999" → [{ label, price }]
+function parsePricingTiers(raw) {
+  if (!raw) return [];
+  return raw.split(',').map((t) => {
+    const dashIdx = t.lastIndexOf(' - ');
+    if (dashIdx === -1) return null;
+    const label = t.slice(0, dashIdx).trim();
+    const price = parseInt(t.slice(dashIdx + 3).trim(), 10);
+    return { label, price };
+  }).filter(Boolean);
+}
+
+function formatDate(iso) {
+  if (!iso) return '';
+  return new Date(iso).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+}
 
 export default function PackageDetailModal({ pkg, isOpen, onClose }) {
   const [activeTab, setActiveTab] = useState('overview');
@@ -11,6 +28,8 @@ export default function PackageDetailModal({ pkg, isOpen, onClose }) {
   const included = pkg.included ? pkg.included.split('|') : [];
   const notIncluded = pkg.not_included ? pkg.not_included.split('|') : [];
   const itinerary = Array.isArray(pkg.itinerary) ? pkg.itinerary : [];
+  const tiers = parsePricingTiers(pkg.pricing_tiers);
+  const [selectedTier, setSelectedTier] = useState(tiers[0] ?? null);
 
   const overviewItems = pkg.overview
     ? pkg.overview.split('|').map((item) => {
@@ -24,6 +43,13 @@ export default function PackageDetailModal({ pkg, isOpen, onClose }) {
     { key: 'itinerary', label: 'Itinerary' },
     { key: 'inclusions', label: 'Inclusions' },
   ];
+
+  const hasDates = pkg.start_date && pkg.end_date;
+  const displayPrice = selectedTier
+    ? `₹${selectedTier.price.toLocaleString('en-IN')}`
+    : pkg.price
+      ? `₹${pkg.price}`
+      : null;
 
   return (
     <AnimatePresence>
@@ -88,9 +114,75 @@ export default function PackageDetailModal({ pkg, isOpen, onClose }) {
               >
                 {pkg.name}
               </h2>
-              <p className="text-sm mb-6" style={{ color: 'var(--color-muted)', fontWeight: 300 }}>
+              <p className="text-sm mb-3" style={{ color: 'var(--color-muted)', fontWeight: 300 }}>
                 {pkg.tagline}
               </p>
+
+              {/* Dates & Seats row */}
+              {(hasDates || pkg.seats_available != null) && (
+                <div className="flex flex-wrap items-center gap-3 mb-5">
+                  {hasDates && (
+                    <div
+                      className="flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-lg"
+                      style={{ backgroundColor: 'var(--color-bg-dark)', color: 'var(--color-muted)', border: '1px solid var(--color-border)' }}
+                    >
+                      <Calendar size={12} />
+                      <span style={{ fontWeight: 500 }}>
+                        {formatDate(pkg.start_date)} – {formatDate(pkg.end_date)}
+                      </span>
+                    </div>
+                  )}
+                  {pkg.seats_available != null && (
+                    <div
+                      className="flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-lg"
+                      style={{
+                        backgroundColor: pkg.seats_available <= 10 ? 'rgba(220,38,38,0.08)' : 'var(--color-bg-dark)',
+                        color: pkg.seats_available <= 10 ? '#dc2626' : 'var(--color-muted)',
+                        border: `1px solid ${pkg.seats_available <= 10 ? 'rgba(220,38,38,0.2)' : 'var(--color-border)'}`,
+                      }}
+                    >
+                      <Users size={12} />
+                      <span style={{ fontWeight: 500 }}>{pkg.seats_available} seats available</span>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {/* Pricing Tier Selector */}
+              {tiers.length > 0 && (
+                <div className="mb-5">
+                  <p className="text-xs uppercase tracking-widest mb-2" style={{ color: 'var(--color-muted)', fontWeight: 600 }}>
+                    Select Travel Option
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {tiers.map((tier) => {
+                      const isSelected = selectedTier?.label === tier.label;
+                      return (
+                        <button
+                          key={tier.label}
+                          onClick={() => setSelectedTier(tier)}
+                          className="px-3 py-2 rounded-lg text-xs transition-all duration-200"
+                          style={{
+                            fontFamily: 'var(--font-body)',
+                            fontWeight: isSelected ? 600 : 400,
+                            border: `1.5px solid ${isSelected ? 'var(--color-accent)' : 'var(--color-border)'}`,
+                            backgroundColor: isSelected ? 'var(--color-accent)' : 'transparent',
+                            color: isSelected ? 'var(--color-off-white)' : 'var(--color-text)',
+                          }}
+                        >
+                          {tier.label}
+                          <span className="ml-1.5 font-semibold">₹{tier.price.toLocaleString('en-IN')}</span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                  {pkg.booking_amount && (
+                    <p className="text-xs mt-2" style={{ color: 'var(--color-muted)' }}>
+                      Book now for just <span style={{ color: 'var(--color-accent)', fontWeight: 600 }}>₹{Number(pkg.booking_amount).toLocaleString('en-IN')}</span> advance
+                    </p>
+                  )}
+                </div>
+              )}
 
               {/* Tabs */}
               <div className="flex gap-6 mb-6" style={{ borderBottom: '1px solid var(--color-border)' }}>
@@ -209,12 +301,17 @@ export default function PackageDetailModal({ pkg, isOpen, onClose }) {
                 borderTop: '1px solid var(--color-border)',
               }}
             >
-              <span
-                className="text-2xl"
-                style={{ fontFamily: 'var(--font-heading)', fontWeight: 600, color: 'var(--color-accent)' }}
-              >
-                {pkg.price}
-              </span>
+              <div>
+                <span
+                  className="text-2xl block"
+                  style={{ fontFamily: 'var(--font-heading)', fontWeight: 600, color: 'var(--color-accent)' }}
+                >
+                  {displayPrice}
+                </span>
+                {selectedTier && (
+                  <span className="text-xs" style={{ color: 'var(--color-muted)' }}>{selectedTier.label}</span>
+                )}
+              </div>
               <div className="flex items-center gap-2">
                 <Link
                   to={`/contact?package=${pkg.slug}`}

@@ -1,11 +1,28 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Clock, MessageCircle, Check, Minus, Copy, Share2, ArrowLeft } from 'lucide-react';
+import { Clock, MessageCircle, Check, Minus, Copy, Share2, ArrowLeft, Calendar, Users, MapPin } from 'lucide-react';
 import { getPackageBySlug } from '../lib/supabase';
 import { usePackages } from '../hooks/usePackages';
 import PackageCard from '../components/ui/PackageCard';
 import SkeletonCard from '../components/ui/SkeletonCard';
+
+// Parse "3 Tier AC - 15999|AC Bus - 18999" → [{ label, price }]
+function parsePricingTiers(raw) {
+  if (!raw) return [];
+  return raw.split(',').map((t) => {
+    const dashIdx = t.lastIndexOf(' - ');
+    if (dashIdx === -1) return null;
+    const label = t.slice(0, dashIdx).trim();
+    const price = parseInt(t.slice(dashIdx + 3).trim(), 10);
+    return { label, price };
+  }).filter(Boolean);
+}
+
+function formatDate(iso) {
+  if (!iso) return '';
+  return new Date(iso).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+}
 
 const tabs = [
   { key: 'overview', label: 'Overview' },
@@ -20,6 +37,7 @@ export default function PackageDetail() {
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('overview');
   const [copied, setCopied] = useState(false);
+  const [selectedTier, setSelectedTier] = useState(null);
 
   useEffect(() => {
     (async () => {
@@ -38,6 +56,13 @@ export default function PackageDetail() {
   const included = pkg?.included ? pkg.included.split('|') : [];
   const notIncluded = pkg?.not_included ? pkg.not_included.split('|') : [];
   const itinerary = Array.isArray(pkg?.itinerary) ? pkg.itinerary : [];
+  const tiers = parsePricingTiers(pkg?.pricing_tiers);
+
+  // Set default tier once pkg loads
+  useEffect(() => {
+    if (tiers.length > 0 && !selectedTier) setSelectedTier(tiers[0]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pkg]);
 
   const overviewItems = pkg?.overview
     ? pkg.overview.split('|').map((item) => {
@@ -45,6 +70,12 @@ export default function PackageDetail() {
         return { label, value };
       })
     : [];
+
+  const places = pkg?.places_english ? pkg.places_english.split(',').map((p) => p.trim()) : [];
+
+  const displayPrice = selectedTier
+    ? `₹${selectedTier.price.toLocaleString('en-IN')}`
+    : pkg?.price ? `₹${pkg.price}` : null;
 
   const related = allPackages
     .filter((p) => p.category === pkg?.category && p.slug !== slug)
@@ -170,7 +201,7 @@ export default function PackageDetail() {
                     {pkg.description}
                   </p>
                   {overviewItems.length > 0 && (
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
                       {overviewItems.map((item, i) => (
                         <div
                           key={i}
@@ -183,6 +214,46 @@ export default function PackageDetail() {
                           <span className="text-sm font-medium">{item.value}</span>
                         </div>
                       ))}
+                    </div>
+                  )}
+                  {/* Places Covered */}
+                  {places.length > 0 && (
+                    <div className="mb-8">
+                      <h4 className="text-sm font-semibold mb-3 flex items-center gap-2" style={{ color: 'var(--color-text)' }}>
+                        <MapPin size={14} color="var(--color-accent)" />
+                        Places Covered
+                      </h4>
+                      <div className="flex flex-wrap gap-2">
+                        {places.map((place, i) => (
+                          <span
+                            key={i}
+                            className="px-3 py-1 text-xs rounded-full"
+                            style={{
+                              backgroundColor: 'var(--color-bg-dark)',
+                              border: '1px solid var(--color-border)',
+                              color: 'var(--color-muted)',
+                              fontWeight: 400,
+                            }}
+                          >
+                            {place}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Full package image — uncropped */}
+                  {pkg.image_url && (
+                    <div
+                      className="rounded-2xl overflow-hidden"
+                      style={{ border: '1px solid var(--color-border)' }}
+                    >
+                      <img
+                        src={pkg.image_url}
+                        alt={pkg.name}
+                        className="w-full h-auto"
+                        style={{ display: 'block', maxHeight: 520, objectFit: 'contain', backgroundColor: 'var(--color-bg-dark)' }}
+                      />
                     </div>
                   )}
                 </motion.div>
@@ -274,17 +345,88 @@ export default function PackageDetail() {
                 </p>
                 <div className="w-full h-px mb-4" style={{ backgroundColor: 'var(--color-accent)', opacity: 0.3 }} />
 
-                <div className="flex items-center gap-4 mb-6">
+                {/* Duration row */}
+                <div className="flex items-center gap-4 mb-4">
                   <span className="flex items-center gap-1 text-sm" style={{ color: 'var(--color-muted)' }}>
                     <Clock size={14} /> {pkg.duration}
                   </span>
-                  <span
-                    className="text-2xl"
-                    style={{ fontFamily: 'var(--font-heading)', fontWeight: 600, color: 'var(--color-accent)' }}
-                  >
-                    {pkg.price}
-                  </span>
                 </div>
+
+                {/* Tour Dates */}
+                {pkg.start_date && pkg.end_date && (
+                  <div
+                    className="flex items-center gap-2 text-xs p-3 rounded-lg mb-4"
+                    style={{ backgroundColor: 'var(--color-bg-dark)', border: '1px solid var(--color-border)', color: 'var(--color-muted)' }}
+                  >
+                    <Calendar size={13} />
+                    <span style={{ fontWeight: 500 }}>
+                      {formatDate(pkg.start_date)} → {formatDate(pkg.end_date)}
+                    </span>
+                  </div>
+                )}
+
+                {/* Seats Badge */}
+                {pkg.seats_available != null && (
+                  <div
+                    className="flex items-center gap-2 text-xs p-3 rounded-lg mb-4"
+                    style={{
+                      backgroundColor: pkg.seats_available <= 10 ? 'rgba(220,38,38,0.06)' : 'var(--color-bg-dark)',
+                      border: `1px solid ${pkg.seats_available <= 10 ? 'rgba(220,38,38,0.2)' : 'var(--color-border)'}`,
+                      color: pkg.seats_available <= 10 ? '#dc2626' : 'var(--color-muted)',
+                    }}
+                  >
+                    <Users size={13} />
+                    <span style={{ fontWeight: 500 }}>{pkg.seats_available} seats available</span>
+                  </div>
+                )}
+
+                {/* Pricing Tier Selector */}
+                {tiers.length > 0 && (
+                  <div className="mb-5">
+                    <p className="text-xs uppercase tracking-widest mb-2" style={{ color: 'var(--color-muted)', fontWeight: 600 }}>Select Travel Option</p>
+                    <div className="flex flex-col gap-2">
+                      {tiers.map((tier) => {
+                        const isSelected = selectedTier?.label === tier.label;
+                        return (
+                          <button
+                            key={tier.label}
+                            onClick={() => setSelectedTier(tier)}
+                            className="flex items-center justify-between px-4 py-2.5 rounded-lg text-sm transition-all duration-200 text-left"
+                            style={{
+                              fontFamily: 'var(--font-body)',
+                              border: `1.5px solid ${isSelected ? 'var(--color-accent)' : 'var(--color-border)'}`,
+                              backgroundColor: isSelected ? 'var(--color-accent)' : 'transparent',
+                              color: isSelected ? 'var(--color-off-white)' : 'var(--color-text)',
+                            }}
+                          >
+                            <span style={{ fontWeight: isSelected ? 600 : 400 }}>{tier.label}</span>
+                            <span style={{ fontWeight: 700 }}>₹{tier.price.toLocaleString('en-IN')}</span>
+                          </button>
+                        );
+                      })}
+                    </div>
+                    {pkg.booking_amount && (
+                      <p className="text-xs mt-2" style={{ color: 'var(--color-muted)' }}>
+                        Advance booking: <span style={{ color: 'var(--color-accent)', fontWeight: 600 }}>₹{Number(pkg.booking_amount).toLocaleString('en-IN')}</span>
+                      </p>
+                    )}
+                  </div>
+                )}
+
+                {/* Selected Price Display */}
+                {displayPrice && (
+                  <div className="mb-5">
+                    <span
+                      className="text-3xl"
+                      style={{ fontFamily: 'var(--font-heading)', fontWeight: 600, color: 'var(--color-accent)' }}
+                    >
+                      {displayPrice}
+                    </span>
+                    {selectedTier && (
+                      <span className="block text-xs mt-0.5" style={{ color: 'var(--color-muted)' }}>{selectedTier.label}</span>
+                    )}
+                  </div>
+                )}
 
                 <Link
                   to={`/contact?package=${pkg.slug}`}
