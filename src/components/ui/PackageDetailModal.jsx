@@ -17,8 +17,10 @@ function parsePricingTiers(raw) {
 
 function formatDate(iso) {
   if (!iso) return '';
-  return new Date(iso).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+  // Append T00:00:00 so JS parses as local time, not UTC (prevents -1 day shift in IST)
+  return new Date(iso + 'T00:00:00').toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
 }
+
 
 export default function PackageDetailModal({ pkg, isOpen, onClose }) {
   const [activeTab, setActiveTab] = useState('overview');
