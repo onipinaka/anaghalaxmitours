@@ -109,3 +109,107 @@ export async function getPackagesByCategory(category) {
 }
 
 export { fallbackData };
+
+// ─── Gallery ──────────────────────────────────────────────────────────────────
+// Fallback shown when Supabase is unreachable.
+// Mirrors the original hardcoded galleryItems in Gallery.jsx.
+const galleryFallback = [
+  {
+    id: 1,
+    type: 'photo',
+    src: 'https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=600&q=80',
+    video_url: '',
+    caption: 'Maldives — Sunset over the Indian Ocean',
+    layout: '',
+    active: true,
+  },
+  {
+    id: 2,
+    type: 'photo',
+    src: 'https://images.unsplash.com/photo-1512100356356-de1b84283e18?w=600&q=80',
+    video_url: '',
+    caption: 'Bali — Rice terrace morning light',
+    layout: 'vertical',
+    active: true,
+  },
+  {
+    id: 3,
+    type: 'photo',
+    src: 'https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=600&q=80',
+    video_url: '',
+    caption: 'India — The Taj at golden hour',
+    layout: '',
+    active: true,
+  },
+  {
+    id: 4,
+    type: 'video',
+    src: 'https://images.unsplash.com/photo-1433086966358-54859d0ed716?w=600&q=80',
+    video_url: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    caption: 'Himalayas — Trek through the clouds',
+    layout: '',
+    active: true,
+  },
+  {
+    id: 5,
+    type: 'photo',
+    src: 'https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=600&q=80',
+    video_url: '',
+    caption: 'Santorini — Blue domes at sunset',
+    layout: 'horizontal',
+    active: true,
+  },
+  {
+    id: 6,
+    type: 'photo',
+    src: 'https://images.unsplash.com/photo-1528164344705-47542687000d?w=600&q=80',
+    video_url: '',
+    caption: 'Rajasthan — Golden sand dunes of Jaisalmer',
+    layout: '',
+    active: true,
+  },
+  {
+    id: 7,
+    type: 'photo',
+    src: 'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=600&q=80',
+    video_url: '',
+    caption: 'Japan — Sakura season in Kyoto',
+    layout: 'vertical',
+    active: true,
+  },
+  {
+    id: 8,
+    type: 'photo',
+    src: 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=600&q=80',
+    video_url: '',
+    caption: 'Swiss Alps — Mirror lake reflections',
+    layout: '',
+    active: true,
+  },
+  {
+    id: 9,
+    type: 'video',
+    src: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80',
+    video_url: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+    caption: 'Maldives — Overwater villa experience',
+    layout: '',
+    active: true,
+  },
+  {
+    id: 10,
+    type: 'photo',
+    src: 'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600&q=80',
+    video_url: '',
+    caption: 'Patagonia — Lake cruise through fjords',
+    layout: '',
+    active: true,
+  },
+];
+
+export async function getGalleryItems() {
+  try {
+    return await supabaseFetch('gallery?active=eq.true&order=id.asc');
+  } catch {
+    return { data: galleryFallback, isFallback: true };
+  }
+}
